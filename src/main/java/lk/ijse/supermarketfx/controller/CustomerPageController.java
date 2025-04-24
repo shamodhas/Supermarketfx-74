@@ -2,6 +2,7 @@ package lk.ijse.supermarketfx.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import lk.ijse.supermarketfx.dto.CustomerDTO;
@@ -42,14 +43,37 @@ public class CustomerPageController implements Initializable {
         String customerId = lblId.getText();
 
         // DTO - Data transfer object
-        CustomerDTO customerDTO = new CustomerDTO();
-        customerDTO.
-
         // Create dto object wrap data to single unit
+        CustomerDTO customerDTO = new CustomerDTO(
+                customerId,
+                name,
+                nic,
+                email,
+                phone
+        );
+        // setter method customerDTO.setNic("");
 
-//        CustomerModel.saveCustomer();
+        // Call CustomerModel inside saveCustomer method
+        // controller to model parse data using dto
         CustomerModel customerModel = new CustomerModel();
-        customerModel.saveCustomer(name,customerId,nic,email,phone);
+        try {
+            boolean isSave = customerModel.saveCustomer(customerDTO);
+            if (isSave) {
+                new Alert(
+                        Alert.AlertType.INFORMATION, "Customer saved successfully..!"
+                ).show();
+            } else {
+                new Alert(
+                        Alert.AlertType.ERROR, "Fail to save customer..!"
+                ).show();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            new Alert(
+                    Alert.AlertType.ERROR, "Fail to save customer..!"
+            ).show();
+        }
+//       Static method call using classname CustomerModel.saveCustomer();
     }
 
 }
