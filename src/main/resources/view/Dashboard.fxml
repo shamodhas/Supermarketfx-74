@@ -8,7 +8,6 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.supermarketfx.controller.DashboardController">
    <children>
       <VBox prefWidth="200.0" spacing="30.0" style="-fx-background-color: #2ecc71;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -20,7 +19,7 @@
             </Label>
             <VBox alignment="CENTER" spacing="10.0">
                <children>
-                  <Button alignment="TOP_LEFT" mnemonicParsing="false" onAction="#btnCustomerOnAction" prefWidth="180.0" style="-fx-background-color: #2ecc71; -fx-border-color: #fff; -fx-border-width: 0 0 1px 0;" text="Customer" textFill="WHITE">
+                  <Button fx:id="btnCus" alignment="TOP_LEFT" mnemonicParsing="false" onAction="#btnCustomerOnAction" prefWidth="180.0" style="-fx-background-color: #2ecc71; -fx-border-color: #fff; -fx-border-width: 0 0 1px 0;" text="Customer" textFill="WHITE">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
@@ -28,7 +27,7 @@
                         <Font name="Calibri Bold" size="15.0" />
                      </font>
                   </Button>
-                  <Button alignment="TOP_LEFT" mnemonicParsing="false" onAction="#btnItemOnAction" prefWidth="180.0" style="-fx-background-color: #2ecc71; -fx-border-color: #fff; -fx-border-width: 0 0 1px 0;" text="Item" textFill="WHITE">
+                  <Button fx:id="btnItem" alignment="TOP_LEFT" mnemonicParsing="false" onAction="#btnItemOnAction" prefWidth="180.0" style="-fx-background-color: #2ecc71; -fx-border-color: #fff; -fx-border-width: 0 0 1px 0;" text="Item" textFill="WHITE">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
@@ -36,7 +35,7 @@
                         <Font name="Calibri Bold" size="15.0" />
                      </font>
                   </Button>
-                  <Button alignment="TOP_LEFT" mnemonicParsing="false" onAction="#btnOrderOnAction" prefWidth="180.0" style="-fx-background-color: #2ecc71; -fx-border-color: #fff; -fx-border-width: 0 0 1px 0;" text="Order" textFill="WHITE">
+                  <Button fx:id="btnOrder" alignment="TOP_LEFT" mnemonicParsing="false" onAction="#btnOrderOnAction" prefWidth="180.0" style="-fx-background-color: #2ecc71; -fx-border-color: #fff; -fx-border-width: 0 0 1px 0;" text="Order" textFill="WHITE">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>

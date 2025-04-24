@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import lk.ijse.supermarketfx.db.DBConnection;
 
@@ -25,11 +26,17 @@ import java.util.ResourceBundle;
 
 public class DashboardController implements Initializable {
     public AnchorPane ancMainContainer;
+    public Button btnCus;
+    public Button btnItem;
+    public Button btnOrder;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
-        System.out.println("Dashboard loaded, I'm initialize");
+//        if(user.role.exjd){
+//        btnItem.setVisible(false);
+//        btnItem.setDisable(false);
+//    }
+//        System.out.println("Dashboard loaded, I'm initialize");
         navigateTo("/view/CustomerPage.fxml");
     }
 
