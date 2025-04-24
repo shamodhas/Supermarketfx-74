@@ -22,7 +22,7 @@
                         <Font name="Calibri Bold" size="13.0" />
                      </font>
                   </Label>
-                  <Label layoutX="10.0" layoutY="10.0" text="1" HBox.hgrow="ALWAYS" />
+                  <Label fx:id="lblId" layoutX="10.0" layoutY="10.0" text="1" HBox.hgrow="ALWAYS" />
                </children>
             </HBox>
             <HBox layoutX="10.0" layoutY="10.0" prefWidth="200.0">
@@ -32,7 +32,7 @@
                         <Font name="Calibri Bold" size="13.0" />
                      </font>
                   </Label>
-                  <TextField promptText="customer" style="-fx-background-color: #fff; -fx-border-color: #BB25B9; -fx-border-width: 0 0 2px 0;" HBox.hgrow="ALWAYS" />
+                  <TextField fx:id="txtName" promptText="customer" style="-fx-background-color: #fff; -fx-border-color: #BB25B9; -fx-border-width: 0 0 2px 0;" HBox.hgrow="ALWAYS" />
                </children>
             </HBox>
             <HBox layoutX="10.0" layoutY="110.0" prefWidth="200.0">
@@ -42,7 +42,7 @@
                         <Font name="Calibri Bold" size="13.0" />
                      </font>
                   </Label>
-                  <TextField promptText="000000000000" style="-fx-background-color: #fff; -fx-border-color: #BB25B9; -fx-border-width: 0 0 2px 0;" HBox.hgrow="ALWAYS" />
+                  <TextField fx:id="txtNic" promptText="000000000000" style="-fx-background-color: #fff; -fx-border-color: #BB25B9; -fx-border-width: 0 0 2px 0;" HBox.hgrow="ALWAYS" />
                </children>
             </HBox>
             <HBox prefWidth="200.0">
@@ -52,7 +52,7 @@
                         <Font name="Calibri Bold" size="13.0" />
                      </font>
                   </Label>
-                  <TextField promptText="customer@gmail.com" style="-fx-background-color: #fff; -fx-border-color: #BB25B9; -fx-border-width: 0 0 2px 0;" HBox.hgrow="ALWAYS" />
+                  <TextField fx:id="txtEmail" promptText="customer@gmail.com" style="-fx-background-color: #fff; -fx-border-color: #BB25B9; -fx-border-width: 0 0 2px 0;" HBox.hgrow="ALWAYS" />
                </children>
             </HBox>
             <HBox layoutX="10.0" layoutY="77.0" prefWidth="200.0">
@@ -62,7 +62,7 @@
                         <Font name="Calibri Bold" size="13.0" />
                      </font>
                   </Label>
-                  <TextField promptText="0777777777" style="-fx-background-color: #fff; -fx-border-color: #BB25B9; -fx-border-width: 0 0 2px 0;" HBox.hgrow="ALWAYS" />
+                  <TextField fx:id="txtPhone" promptText="0777777777" style="-fx-background-color: #fff; -fx-border-color: #BB25B9; -fx-border-width: 0 0 2px 0;" HBox.hgrow="ALWAYS" />
                </children>
             </HBox>
             <HBox alignment="CENTER" prefWidth="200.0" spacing="20.0">
@@ -87,7 +87,7 @@
                         <Font name="Calibri Bold" size="13.0" />
                      </font>
                   </Button>
-                  <Button layoutX="166.0" layoutY="10.0" mnemonicParsing="false" prefWidth="100.0" style="-fx-background-color: #26DE81;" text="Save" textFill="WHITE">
+                  <Button layoutX="166.0" layoutY="10.0" mnemonicParsing="false" onAction="#btnCustomerSaveOnAction" prefWidth="100.0" style="-fx-background-color: #26DE81;" text="Save" textFill="WHITE">
                      <font>
                         <Font name="Calibri Bold" size="13.0" />
                      </font>
