@@ -29,6 +29,7 @@ public class CustomerModel {
         ResultSet resultSet = CrudUtil.execute("select * from customer");
 
         ArrayList<CustomerDTO> list = new ArrayList<>();
+
         while (resultSet.next()) {
             CustomerDTO customerDTO = new CustomerDTO(
                     resultSet.getString(1),
@@ -87,6 +88,24 @@ public class CustomerModel {
                 customerDTO.getNic(),
                 customerDTO.getEmail(),
                 customerDTO.getPhone()
+        );
+    }
+
+    public boolean updateCustomer(CustomerDTO customerDTO) throws SQLException {
+        return CrudUtil.execute(
+                "update customer set name=?, nic=?, email=?, phone=? where customer_id=?",
+                customerDTO.getName(),
+                customerDTO.getNic(),
+                customerDTO.getEmail(),
+                customerDTO.getPhone(),
+                customerDTO.getCustomerId()
+        );
+    }
+
+    public boolean deleteCustomer(String customerId) throws SQLException {
+        return CrudUtil.execute(
+                "delete from customer where customer_id=?",
+                customerId
         );
     }
 }
