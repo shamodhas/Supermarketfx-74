@@ -43,6 +43,14 @@
                         <Font name="Calibri Bold" size="15.0" />
                      </font>
                   </Button>
+                  <Button alignment="TOP_LEFT" layoutX="20.0" layoutY="88.0" mnemonicParsing="false" onAction="#btnMainOnAction" prefWidth="180.0" style="-fx-background-color: #2ecc71; -fx-border-color: #fff; -fx-border-width: 0 0 1px 0;" text="Mail" textFill="WHITE">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <font>
+                        <Font name="Calibri Bold" size="15.0" />
+                     </font>
+                  </Button>
                </children>
                <padding>
                   <Insets left="10.0" right="10.0" />

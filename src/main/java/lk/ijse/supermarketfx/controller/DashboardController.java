@@ -68,4 +68,7 @@ public class DashboardController implements Initializable {
         }
     }
 
+    public void btnMainOnAction(ActionEvent actionEvent) {
+//        navigateTo("/view/SendMailPage.fxml");
+    }
 }

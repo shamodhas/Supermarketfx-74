@@ -3,21 +3,32 @@ package lk.ijse.supermarketfx.controller;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import javafx.stage.Window;
+import lk.ijse.supermarketfx.db.DBConnection;
 import lk.ijse.supermarketfx.dto.CustomerDTO;
 import lk.ijse.supermarketfx.dto.tm.CustomerTM;
 import lk.ijse.supermarketfx.model.CustomerModel;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.view.JasperViewer;
 
 import java.net.URL;
+import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.ResourceBundle;
+import java.time.LocalDate;
+import java.util.*;
 import java.util.regex.Pattern;
 
 /**
@@ -371,5 +382,111 @@ public class CustomerPageController implements Initializable {
 
     public void btnResetOnAction(ActionEvent actionEvent) throws SQLException {
         resetPage();
+    }
+
+    public void generateAllCustomerReport(ActionEvent actionEvent) {
+        try {
+            JasperReport jasperReport = JasperCompileManager.compileReport(
+                    getClass().getResourceAsStream("/report/customers.jrxml")
+            );
+
+            Connection connection = DBConnection.getInstance().getConnection();
+
+            Map<String, Object> parameters = new HashMap<>();
+            parameters.put("p_date", LocalDate.now().toString());
+
+            JasperPrint jasperPrint = JasperFillManager.fillReport(
+                    jasperReport,
+                    parameters, // null
+                    connection
+            );
+
+            JasperViewer.viewReport(jasperPrint, false);
+
+            // p_date
+
+            // arraylist
+            // 0 data
+            // 1 data
+
+            // map
+            // key - value
+            // v1 - hello
+            // string - object
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void genrateCustomerOrderReport(ActionEvent actionEvent) {
+        CustomerTM selectedItem = tblCustomer.getSelectionModel().getSelectedItem();
+        if (customerModel == null) {
+            return;
+        }
+
+        try {
+            JasperReport jasperReport = JasperCompileManager.compileReport(
+                    getClass().getResourceAsStream("/report/customer_order_report.jrxml")
+            );
+
+            Connection connection = DBConnection.getInstance().getConnection();
+
+            Map<String, Object> parameters = new HashMap<>();
+            parameters.put("p_customer_id", selectedItem.getId());
+
+            JasperPrint jasperPrint = JasperFillManager.fillReport(
+                    jasperReport,
+                    parameters, // null
+                    connection
+            );
+
+            JasperViewer.viewReport(jasperPrint, false);
+
+            // p_date
+
+            // arraylist
+            // 0 data
+            // 1 data
+
+            // map
+            // key - value
+            // v1 - hello
+            // string - object
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void btnSendMail(ActionEvent actionEvent) {
+        CustomerTM selectedItem = tblCustomer.getSelectionModel().getSelectedItem();
+        if (customerModel == null) {
+            return;
+        }
+
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/SendMailPage.fxml"));
+            Parent load = fxmlLoader.load();
+
+            SendMailPageController controller = fxmlLoader.getController();
+            controller.setCustomerEmail(selectedItem.getEmail());
+
+            Stage stage = new Stage();
+            stage.setScene(new Scene(load));
+            stage.setTitle("Send mail");
+
+            stage.initModality(Modality.APPLICATION_MODAL);
+
+            Window window = txtPhone.getScene().getWindow();
+            stage.initOwner(window);
+
+            stage.showAndWait();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

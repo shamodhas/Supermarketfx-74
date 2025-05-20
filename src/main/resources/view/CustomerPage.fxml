@@ -67,7 +67,8 @@
             </HBox>
             <HBox alignment="CENTER" prefWidth="200.0" spacing="20.0">
                <children>
-                  <Button mnemonicParsing="false" prefWidth="150.0" style="-fx-background-color: #778CA3;" text="Generate Report" textFill="WHITE">
+                  <Button mnemonicParsing="false" onAction="#generateAllCustomerReport" text="ALl Customer Report" />
+                  <Button mnemonicParsing="false" onAction="#genrateCustomerOrderReport" prefWidth="150.0" style="-fx-background-color: #778CA3;" text="Generate Report" textFill="WHITE">
                      <font>
                         <Font name="Calibri Bold" size="13.0" />
                      </font>
@@ -92,6 +93,7 @@
                         <Font name="Calibri Bold" size="13.0" />
                      </font>
                   </Button>
+                  <Button layoutX="10.0" layoutY="30.0" mnemonicParsing="false" onAction="#btnSendMail" text="Send mail" HBox.hgrow="ALWAYS" />
                </children>
                <padding>
                   <Insets bottom="20.0" top="20.0" />
